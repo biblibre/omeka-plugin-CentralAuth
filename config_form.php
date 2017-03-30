@@ -75,7 +75,13 @@ $sections = array(
             'explanation' => __(
                 'Do not include leading or trailing slashes.'
             )
-        )
+        ),
+        array(
+            'name' => 'central_auth_sso_cas_create_user',
+            'label' => __('Create user'),
+            'explanation' => __('Create Omeka user if it does not exist. Requires GuestUser plugin'),
+            'checkbox' => true,
+        ),
     ),
     'LDAP - Lightweight Directory Access Protocol' => array(
         array(

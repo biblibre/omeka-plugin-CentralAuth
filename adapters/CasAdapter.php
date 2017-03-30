@@ -103,6 +103,20 @@ class CentralAuth_CasAdapter implements Zend_Auth_Adapter_Interface
                 );
             }
 
+            // If no users were found, create one
+            if (!$user && get_option('central_auth_sso_cas_create_user')
+                && plugin_is_active('GuestUser'))
+            {
+                $user = new User;
+                $user->name = $user->username = $this->_client->getUsername();
+                $user->email = $user->name . '@example.com';
+                $user->role = 'guest';
+                $user->active = 1;
+                $user->save();
+
+                return new Zend_Auth_Result(Zend_Auth_Result::SUCCESS, $user->id);
+            }
+
             // Return that the user does not have an active account.
             return new Zend_Auth_Result(
                 Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND,

@@ -45,6 +45,7 @@ class CentralAuthPlugin extends Omeka_Plugin_AbstractPlugin
         'central_auth_sso_cas_hostname' => 'cas.example.edu',
         'central_auth_sso_cas_port' => '',
         'central_auth_sso_cas_uri' => 'cas',
+        'central_auth_sso_cas_create_user' => false,
         'central_auth_ldap' => false,
         'central_auth_ldap_host' => 'ldap.example.edu',
         'central_auth_ldap_port' => '',
